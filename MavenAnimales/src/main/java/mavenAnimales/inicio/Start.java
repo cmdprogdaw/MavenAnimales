@@ -1,10 +1,12 @@
 package mavenAnimales.inicio;
 
+import mavenAnimales.modelo.biologos.CreateBiologos;
 import mavenAnimales.modelo.especie.CreateEspecie;
 import mavenAnimales.modelo.individuo.CreateIndividuo;
 import mavenAnimales.modelo.informe.CreateInforme;
 import mavenAnimales.modelo.movimientos.CreateMovimientos;
 import mavenAnimales.modelo.torreta.CreateTorreta;
+import mavenAnimales.negocio.BiologosBean;
 import mavenAnimales.negocio.EspecieBean;
 import mavenAnimales.negocio.IndividuoBean;
 import mavenAnimales.negocio.InformeBean;
@@ -48,6 +50,12 @@ public class Start {
 		InformeBean inf1 = new InformeBean();
 		inf1.setFecha("11/02/2019");
 		
+		BiologosBean cris = new BiologosBean();
+		cris.setNombre("Cristina");
+		cris.setDireccion("Calle Covadonga");
+		cris.setProvincia("Asturias");
+		cris.setFecha_titulacion("17/06/2019");
+		
 		
 		panda.addIndividuos(panda1);
 		panda.addIndividuos(panda2);
@@ -57,6 +65,8 @@ public class Start {
 		torreta1.addMovimientos(mov1);
 		
 		inf1.addMovimientos(mov1);
+		
+		inf1.addBiologos(cris);
 		
 		
 		CreateEspecie createEspecie = new CreateEspecie();
@@ -76,7 +86,8 @@ public class Start {
 		CreateMovimientos createMovimientos = new CreateMovimientos();
 		createMovimientos.create(mov1);
 		
-		
+		CreateBiologos createBiologos = new CreateBiologos();
+		createBiologos.create(cris);
 		
 		
 		ConnectionEntityManager.getEntityManager().close();

@@ -48,6 +48,37 @@ public class InformeBean {
 	}
 	
 	
+	@ManyToMany(mappedBy="informes")
+	private List<BiologosBean> biologos = new ArrayList<BiologosBean>();
+	
+	
+	public void addBiologos(BiologosBean biologo) {
+		
+		if(!biologos.contains(biologo)) {
+			
+			biologos.add(biologo);
+			
+			List<InformeBean> informes = biologo.getInformes();
+			if(!informes.contains(this)) {
+				
+				informes.add(this);
+			}
+		}
+	}
+	
+	
+	
+	
+	public List<BiologosBean> getBiologos() {
+		return biologos;
+	}
+
+
+	public void setBiologos(List<BiologosBean> biologos) {
+		this.biologos = biologos;
+	}
+
+
 	public List<MovimientosBean> getMovimientos() {
 		return movimientos;
 	}
